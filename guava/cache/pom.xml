@@ -8,12 +8,11 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
   <groupId>pl.koziolekweb.guava</groupId>
-  <artifactId>prog_funkcyjne</artifactId>
+  <artifactId>cache</artifactId>
   <version>0.1-SNAPSHOT</version>
-  <name>prog_funkcyjne</name>
+  <name>cache</name>
   <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  <dependencies>
 
+  </dependencies>
 </project>
