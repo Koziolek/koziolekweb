@@ -29,9 +29,9 @@ public class SupplierExample {
 		};
 		Supplier<String> compose = Suppliers
 				.compose(dateLongToDateString, new SimpleCurrentDateAsLongSupplier());
-//		timer.schedule(new SupplierTT(compose), 1000L, 1000L);
+		timer.schedule(new SupplierTT(compose), 1000L, 1000L);
 
-		System.out.println(Suppliers.supplierFunction().apply(compose));
+//		System.out.println(Suppliers.supplierFunction().apply(compose));
 	}
 }
 

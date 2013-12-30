@@ -27,6 +27,12 @@
             <version>[6.8.5,)</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <modules>
         <module>prog_funkcyjne</module>
