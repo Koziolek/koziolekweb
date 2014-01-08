@@ -1,4 +1,4 @@
-package pl.koziolekweb.vaadin-clg;
+package pl.koziolekweb.vaadin_clg;
 
 /**
  * Hello world!
