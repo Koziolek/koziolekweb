@@ -8,11 +8,11 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
+import pl.koziolekweb.vaadin.templates.mytheme.MyCustomLayout;
 
 import javax.servlet.annotation.WebServlet;
 
-import static pl.koziolekweb.vaadin.templates.MyCustomLayout.Placeholders.BUTTON;
-import static pl.koziolekweb.vaadin.templates.MyCustomLayout.Placeholders.LABEL;
+import static pl.koziolekweb.vaadin.templates.mytheme.MyCustomLayout.Locations.label;
 
 @Theme("mytheme")
 @SuppressWarnings("serial")
@@ -26,10 +26,10 @@ public class MyVaadinUI extends UI {
 		Button button = new Button("Click Me");
 		button.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				layout.addComponent(new Label("Thank you for clicking"), LABEL);
+				layout.addComponent(new Label("Thank you for clicking"), label);
 			}
 		});
-		layout.addComponent(button, BUTTON);
+		layout.addComponent(button, MyCustomLayout.Locations.button);
 	}
 
 	@WebServlet(value = "/*", asyncSupported = true)
