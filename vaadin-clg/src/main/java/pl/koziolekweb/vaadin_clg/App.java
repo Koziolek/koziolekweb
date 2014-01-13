@@ -25,7 +25,7 @@ import static pl.koziolekweb.vaadin_clg.PackageToolkit.isMavenProject;
  */
 public class App {
 
-	String template = "package ${package}\n" +
+	String template = "package ${package};\n" +
 			"import com.vaadin.ui.Component;\n" +
 			"import com.vaadin.ui.CustomLayout;\n" +
 			"public class ${class_name} extends CustomLayout {\n" +
