@@ -10,6 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 import static pl.koziolekweb.vaadin_clg.LayoutToolkit.getAllLocations;
 import static pl.koziolekweb.vaadin_clg.LayoutToolkit.getXml;
 import static pl.koziolekweb.vaadin_clg.PackageToolkit.getLayoutsDirectory;
@@ -25,21 +28,6 @@ import static pl.koziolekweb.vaadin_clg.PackageToolkit.isMavenProject;
  */
 public class App {
 
-	String template = "package ${package};\n" +
-			"import com.vaadin.ui.Component;\n" +
-			"import com.vaadin.ui.CustomLayout;\n" +
-			"public class ${class_name} extends CustomLayout {\n" +
-			"public static enum Locations{\n" +
-			"${locations}\n" +
-			"}\n" +
-			"private static final String NAME = \"${class_name}\";\n" +
-			"public ${class_name}(){" +
-			"super(NAME);\n" +
-			"}\n" +
-			"public void addComponent(Component c, Locations p) {\n" +
-			"addComponent(c, p.name());\n" +
-			"}\n" +
-			"}";
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
 		if (!isMavenProject()) {
@@ -77,10 +65,11 @@ public class App {
 					javaFile.createNewFile();
 				}
 				FileWriter fileWriter = new FileWriter(javaFile);
-				fileWriter.write(template
-						.replaceAll("\\$\\{package}", themePackageName.replaceAll("/", "."))
-						.replaceAll("\\$\\{class_name}", layoutName)
-						.replaceAll("\\$\\{locations}", locations)
+				fileWriter.write(CustomLayoutBuilder.init()
+						.setPackageName(themePackageName.replaceAll("/", "."))
+						.setLayoutName(layoutName)
+						.setLocations(locations)
+						.build()
 				);
 				fileWriter.flush();
 				fileWriter.close();
