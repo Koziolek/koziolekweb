@@ -28,31 +28,13 @@ public class SimpleLambda {
 		Collections.shuffle(range);
 	}
 
-	public static boolean isEvenStatic(Integer x) {
-//		if(x == 15633) throw new NullPointerException();
-		return x % 2 == 0;
-	}
-
-	public boolean isEvenNonStatic(Integer x) {
-		return x % 2 == 0;
-	}
-
 	@Test
 	public void lambdaExample() {
 		List<Integer> collect = range.stream().filter(x -> x % 2 == 0).collect(Collectors.toList());
 		assertThat(collect.get(0) % 2).isEqualTo(0);
 	}
 
-	@Test
-	public void lambdaStaticMathodRef() {
-		List<Integer> collect = range.stream().filter(SimpleLambda::isEvenStatic).collect(Collectors.toList());
-		assertThat(collect.get(0) % 2).isEqualTo(0);
-	}
 
-	@Test
-	public void lambdaNonStaticMathodRef() {
-		List<Integer> collect = range.stream().filter(this::isEvenNonStatic).collect(Collectors.toList());
-		assertThat(collect.get(0) % 2).isEqualTo(0);
-	}
+
 }
 
