@@ -33,17 +33,28 @@ public class MetodsRef {
 	@BeforeTest
 	public void setup() {
 		humans = new ArrayList<>();
+		for (int i = 0; i < 50; i++) {
+			humans.add(new Man());
+		}
 		for (int i = 0; i < 50; i++)
-			humans.add(new Human(Sex.M));
-
-		for (int i = 0; i < 50; i++)
-			humans.add(new Human(Sex.F));
+			humans.add(new Woman());
 
 		Collections.shuffle(humans);
 	}
 
 	@Test
 	public void ref() {
+		assertThat(
+				humans.stream()
+						.filter(Human::isMan)
+						.count()
+		)
+				.isEqualTo(50);
+
+	}
+
+	@Test
+	public void refConst() {
 		assertThat(
 				humans.stream()
 						.filter(Human::isMan)
@@ -95,6 +106,18 @@ class Human {
 
 	public boolean isMan() {
 		return sex == Sex.M;
+	}
+}
+
+class Man extends Human {
+	Man() {
+		super(Sex.M);
+	}
+}
+
+class Woman extends Human {
+	Woman() {
+		super(Sex.F);
 	}
 }
 
