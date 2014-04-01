@@ -44,11 +44,12 @@ public class MetodsRef {
 
 	@Test
 	public void ref() {
-		assertThat(
-				humans.stream()
-						.filter(Human::isMan)
-						.count()
-		)
+        Human human = humans.get(0);
+        assertThat(
+                humans.stream()
+                        .filter(human::isM)
+                        .count()
+        )
 				.isEqualTo(50);
 
 	}
@@ -107,6 +108,11 @@ class Human {
 	public boolean isMan() {
 		return sex == Sex.M;
 	}
+	public boolean isM(Human h) {
+		return sex == Sex.M;
+	}
+
+    public static  boolean ISM(Human h){return h.isMan();}
 }
 
 class Man extends Human {

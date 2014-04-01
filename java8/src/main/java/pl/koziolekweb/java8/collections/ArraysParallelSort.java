@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ArraysParallelSort {
 
-	public static final int MAX = 10000;
+	public static final int MAX = 10000000;
 	private List<Integer> range;
 	private Integer[] array;
 

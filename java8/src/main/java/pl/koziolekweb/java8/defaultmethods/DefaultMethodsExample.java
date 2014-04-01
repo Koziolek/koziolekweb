@@ -6,18 +6,18 @@ import org.testng.annotations.Test;
  * TODO write JAVADOC!!!
  * User: koziolek
  */
-public class DefaultMethodsExample implements MyInterface{
+public class DefaultMethodsExample implements MyInterface {
 
-	@Test
-	public void defaultExapmle(){
-		 justImplemented("Hello World");
-	}
+    @Test
+    public void defaultExapmle() {
+        justImplemented("Hello World");
+    }
 }
 
 
 interface MyInterface {
 
-	 default void justImplemented(String message){
-		 System.out.println("message = [" + message + "]");
-	 }
+    default void justImplemented(String message) {
+        System.out.println("message = [" + message + "] " + this);
+    }
 }
