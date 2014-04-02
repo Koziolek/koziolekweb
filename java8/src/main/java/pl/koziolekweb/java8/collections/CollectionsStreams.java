@@ -38,7 +38,7 @@ public class CollectionsStreams {
 
 	@Test(invocationCount = 10)
 	public void simpleLoop() throws Exception {
-		List<Integer> filtered = new LinkedList<Integer>();
+		List<Integer> filtered = new LinkedList<>();
 		for (int i = 0; i < range.size(); i++) {
 			Integer x = range.get(i);
 			if (x > MORE_THAN && x % 3 == 0)
@@ -49,9 +49,9 @@ public class CollectionsStreams {
 
 	@Test(invocationCount = 10)
 	public void simpleTransformStream() {
-		List<Integer> over10000 = range.stream().
-				filter((x) -> x > MORE_THAN).
-				filter(x -> x % 3 == 0)
+		List<Integer> over10000 = range.stream()
+				.filter((x) -> x > MORE_THAN)
+				.filter(x -> x % 3 == 0)
 				.collect(Collectors.toList());
 	}
 
