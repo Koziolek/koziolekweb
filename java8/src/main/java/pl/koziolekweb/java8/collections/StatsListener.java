@@ -1,16 +1,13 @@
 package pl.koziolekweb.java8.collections;
 
+import com.google.common.collect.Lists;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * TODO write JAVADOC!!!
@@ -44,19 +41,25 @@ public class StatsListener extends TestListenerAdapter {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+
+
 		timesMap.entrySet()
 				.stream()
 				.map(x -> new Object[]{x.getKey(),
 						x.getValue()
 								.stream()
-								.map(this::inSeconds)
+								.map(this::inMiliseconds)
 								.mapToDouble(Double::doubleValue)
 								.average().orElse(-1.)})
-				.map(Arrays::toString)
+				.sorted((o1, o2) -> ((String)o1[0]).compareTo(((String)o2[0])))
+                .map(Arrays::toString)
 				.forEach(System.err::println);
 	}
 
 	private double inSeconds(long l){
 		return l/1000;
+	}
+	private double inMiliseconds(long l){
+		return l/1.;
 	}
 }

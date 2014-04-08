@@ -22,3 +22,6 @@
 # Maven
 log/
 target/
+
+#Inne
+*.odp
