@@ -37,7 +37,7 @@ public class StatsListener extends TestListenerAdapter {
 	public void onFinish(ITestContext testContext) {
 		super.onFinish(testContext);
 		try {
-			System.setErr(new PrintStream("out.odp"));
+			System.setErr(new PrintStream("out.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -4,6 +4,11 @@ import com.google.common.collect.Lists;
 import org.testng.annotations.Test;
 import pl.koziolekweb.java8.Range;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,4 +53,18 @@ public class StreamsReduce {
 		System.out.println(reduce);
 	}
 
+}
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.SOURCE)
+@Repeatable(Specki.class)
+@interface Specka {
+
+}
+
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.SOURCE)
+@interface Specki {
+	Specka[] value();
 }
