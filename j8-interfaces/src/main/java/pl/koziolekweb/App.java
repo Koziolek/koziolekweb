@@ -7,6 +7,8 @@ import java.util.Comparator;
  * Hello world!
  */
 public class App {
+	static Silnia silnia = new Silnia();
+
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 	}
@@ -16,7 +18,7 @@ interface Sort<T extends Comparable<T>>{
 
 	Collection<T> sort(Collection<T> c);
 
-	default <E> Collection<E> sort(Collection<E> c, Comparator<E> comp ){
+	default <E> Collection<E> sort(Collection<E> c, Comparator<E> comp){
 		throw new UnsupportedOperationException("Default impl");
 	};
 }
