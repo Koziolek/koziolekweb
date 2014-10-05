@@ -32,6 +32,11 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>clojure</artifactId>
+            <version>1.6.0</version>
+        </dependency>
     </dependencies>
     <modules>
         <module>prog_funkcyjne</module>
@@ -43,6 +48,6 @@
         <module>pliki</module>
         <module>concurrency</module>
         <module>fun</module>
-    <module>idm</module>
+        <module>idm</module>
   </modules>
 </project>

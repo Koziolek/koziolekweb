@@ -4,14 +4,14 @@ import com.google.common.collect.Lists;
 import org.testng.annotations.Test;
 import pl.koziolekweb.java8.Range;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Repeatable;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Arrays.asList;
 
 /**
  * TODO write JAVADOC!!!
@@ -53,18 +53,36 @@ public class StreamsReduce {
 		System.out.println(reduce);
 	}
 
+	@Test
+	public void flatMapExample() throws IOException {
+		String s = "Ala ma kota";
+		List<String> words = asList(s.split(" +"));
+		long count = words.stream()
+				.flatMap((x) -> asList(x.split("")).stream().sorted())
+				.count();
+		System.out.println(count);
+//
+//		Files.readAllLines(new File("out.txt").toPath()).stream()
+//				.filter(x -> !x.isEmpty())
+//				.forEach(x -> System.out.println(x));
+
+	}
 }
 
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.SOURCE)
-@Repeatable(Specki.class)
-@interface Specka {
-
-}
 
 
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.SOURCE)
-@interface Specki {
-	Specka[] value();
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

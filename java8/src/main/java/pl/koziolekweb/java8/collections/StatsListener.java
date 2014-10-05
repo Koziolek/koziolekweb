@@ -8,6 +8,8 @@ import org.testng.TestListenerAdapter;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * TODO write JAVADOC!!!
@@ -42,7 +44,6 @@ public class StatsListener extends TestListenerAdapter {
 			e.printStackTrace();
 		}
 
-
 		timesMap.entrySet()
 				.stream()
 				.map(x -> new Object[]{x.getKey(),
@@ -50,7 +51,7 @@ public class StatsListener extends TestListenerAdapter {
 								.stream()
 								.map(this::inMiliseconds)
 								.mapToDouble(Double::doubleValue)
-								.average().orElse(-1.)})
+								.average()})
 				.sorted((o1, o2) -> ((String)o1[0]).compareTo(((String)o2[0])))
                 .map(Arrays::toString)
 				.forEach(System.err::println);

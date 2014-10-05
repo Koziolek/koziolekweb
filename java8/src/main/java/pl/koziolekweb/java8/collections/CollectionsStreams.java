@@ -23,10 +23,10 @@ import static org.fest.assertions.Assertions.assertThat;
 @Listeners(StatsListener.class)
 public class CollectionsStreams {
 
-	public static final int X = 1000;
+	public static final int X = 10;
 	public static final int MAX = 100000 * X;
 	public static final int MORE_THAN = 10000 * X;
-    public static final int IC = 5;
+    public static final int IC = 15;
     private final ArrayList<Integer> range;
 	private final Predicate<Integer> predicateGt = (x) -> x > MORE_THAN;
 	private final Predicate<Integer> predicateMod = (x) -> x % 3 == 0;
